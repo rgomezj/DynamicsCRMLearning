@@ -1,0 +1,65 @@
+﻿
+<style>
+    .selected {
+        background-color: yellow;
+    }
+
+    .handSelection {
+        cursor: pointer;
+    }
+</style>
+
+<div id="SuccessfulTransaction">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading" data-bind="visible: isPayment">
+                    Process completed
+                </div>
+                <div class="panel-heading" data-bind="visible: isSwap">
+                    Swap registration
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-lg-6" data-bind="visible: isSwap">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>The following Amendments have been completed</label>
+                                    <p class="form-control-static">new user name</p>
+                                    <p class="form-control-static">email from the new user</p>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6" data-bind="visible: isPayment">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>The refund process has been completed successfully</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <form role="form">
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-lg" data-bind="click: goHomePage">
+                                        Return
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/app/successfulTransaction.js")
+    @Scripts.Render("~/Scripts/app/contacts.js")
+}
+@Html.Partial("ContactLookup")
+

@@ -1,0 +1,82 @@
+﻿<style>
+    .selected {
+        background-color: yellow;
+    }
+
+    .handSelection {
+        cursor: pointer;
+    }
+</style>
+
+<div id="swapRegistration">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Swap registration
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Current Registrant</label>
+                                    <p class="form-control-static" data-bind="text: swapRegistrationCurrent.contact().fullName"></p>
+                                    <label>Email</label>
+                                    <p class="form-control-static" data-bind="text: swapRegistrationCurrent.contact().email"></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-4">
+                            <form role="form">
+                                <label>New Registrant</label>
+                                <div class="form-group input-group">
+                                    <input type="text" class="form-control" data-bind="value: selectedContactSwap.fullName, disable: true">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#ContactsModal" data-bind="click: openLookupContacts">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <label>Email</label>
+                                <p class="form-control-static" data-bind="text: selectedContactSwap.email"></p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form">
+                                <div class="form-group">
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6">
+                            <form role="form">
+                                <div class="form-group">
+
+                                    <button class="btn btn-primary btn-lg" data-bind="click: swapRegistration">
+                                        Swap Registration
+                                    </button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/app/swapRegistration.js")
+    @Scripts.Render("~/Scripts/app/contacts.js")
+}
+
+
+
+@Html.Partial("ContactLookup")
+

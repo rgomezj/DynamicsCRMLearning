@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8295C14A-78C8-4164-8D36-E5E7CF4876D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pavliks.WAM.ManagementConsole.Infrastructure</RootNamespace>
+    <AssemblyName>Pavliks.WAM.ManagementConsole.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrmToolkit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_lib\CrmToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy">
+      <HintPath>..\_lib\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client">
+      <HintPath>..\_lib\Microsoft.Xrm.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_lib\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow">
+      <HintPath>..\_lib\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementation\ConfigurationCRM.cs" />
+    <Compile Include="Implementation\EmailCRM.cs" />
+    <Compile Include="Implementation\OrderManagementItemCRM.cs" />
+    <Compile Include="Implementation\OrderCoursesCRM.cs" />
+    <Compile Include="Implementation\OrderTransactionCRM.cs" />
+    <Compile Include="Implementation\ReservationCRM.cs" />
+    <Compile Include="Implementation\SalesOrderItemCRM.cs" />
+    <Compile Include="Implementation\SessionCRM.cs" />
+    <Compile Include="Implementation\RegistrationCRM.cs" />
+    <Compile Include="Implementation\SalesOrderCRM.cs" />
+    <Compile Include="Implementation\EventCRM.cs" />
+    <Compile Include="Implementation\ProductCRM.cs" />
+    <Compile Include="Implementation\ContactCRM.cs" />
+    <Compile Include="Implementation\SMSMessageCRM.cs" />
+    <Compile Include="Implementation\WailistCRM.cs" />
+    <Compile Include="Interfaces\IConfigurationRepository.cs" />
+    <Compile Include="Interfaces\IEmailRepository.cs" />
+    <Compile Include="Interfaces\IOrderManagementItemRepository.cs" />
+    <Compile Include="Interfaces\IOrderCoursesRepository.cs" />
+    <Compile Include="Interfaces\IOrderTransactionRepository.cs" />
+    <Compile Include="Interfaces\IReservationRepository.cs" />
+    <Compile Include="Interfaces\ISalesOrderItemRepository.cs" />
+    <Compile Include="Interfaces\ISessionRepository.cs" />
+    <Compile Include="Interfaces\IRegistrationRepository.cs" />
+    <Compile Include="Interfaces\ISalesOrderRepository.cs" />
+    <Compile Include="Interfaces\IEventRepository.cs" />
+    <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="Interfaces\IContactRepository.cs" />
+    <Compile Include="Interfaces\ISMSMessageRepository.cs" />
+    <Compile Include="Interfaces\IWaitlistRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dynamics.CRM.Samples.Web.WebSites.ManagementConsole.Helpers\Dynamics.CRM.Samples.Web.WebSites.ManagementConsole.Helpers.csproj">
+      <Project>{8c616cab-5a67-4992-bd71-b16db6c5b3c3}</Project>
+      <Name>Dynamics.CRM.Samples.Web.WebSites.ManagementConsole.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dynamics.CRM.Samples.Web.WebSites.ManagementConsole.Domain\Dynamics.CRM.Samples.Web.WebSites.ManagementConsole.Domain.csproj">
+      <Project>{809be9a0-fc69-4e1f-ac86-daab3ce7bf55}</Project>
+      <Name>Dynamics.CRM.Samples.Web.WebSites.ManagementConsole.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

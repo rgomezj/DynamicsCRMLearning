@@ -1,0 +1,263 @@
+﻿@*@section SPAViews {
+        @Html.Partial("_Home")
+    }*@
+
+<style>
+    .selected {
+        background-color: yellow;
+    }
+
+    .refundedWarning {
+        background-color: indianred !important;
+    }
+
+    .handSelection {
+        cursor: pointer;
+    }
+
+    .form-group-margin {
+        margin-bottom: 0px !important;
+    }
+
+    .highlightedField {
+        text-decoration: underline;
+        font-weight: bolder;
+    }
+
+    .importantField {
+        font-weight: bolder;
+    }
+
+    .voffset {
+        margin-top: 0px;
+    }
+
+    .voffset1 {
+        margin-top: 5px;
+    }
+
+    .voffset2 {
+        margin-top: 10px;
+    }
+
+    .voffset3 {
+        margin-top: 15px;
+    }
+
+    .voffset4 {
+        margin-top: 30px;
+    }
+
+    .voffset5 {
+        margin-top: 40px;
+    }
+
+    .voffset6 {
+        margin-top: 60px;
+    }
+
+    .voffset7 {
+        margin-top: 80px;
+    }
+
+    .voffset8 {
+        margin-top: 100px;
+    }
+
+    .voffset9 {
+        margin-top: 150px;
+    }
+</style>
+
+<div id="salesOrderListItemsPage">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading" data-bind="text: pageTitle">
+
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#OrderItems">Order Items</a>
+                                </h4>
+                            </div>
+                            <div class="row panel-collapse collapse in" id="OrderItems">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Refunded</th>
+                                                    <th data-bind="css: { refundedWarning: true }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th data-bind="visible: refundAvailable">Refund?</th>
+                                                    <th>Deactivate?</th>
+                                                    <th>Item #</th>
+                                                    <th>Line Type</th>
+                                                    <th>Registration Name</th>
+                                                    <th>Course</th>
+                                                    <th>Price Per Unit</th>
+                                                    <th>Manual Discount</th>
+                                                    <th>Tuition Credit</th>
+                                                    <th>Scholarship Amount</th>
+                                                    <th>Net Amount Paid</th>
+                                                    <th>Amount to be Refunded</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind='foreach: salesOrderItems'>
+                                                <tr>
+                                                    <td class="col-md-2" data-bind="visible: refundAvailable, css: { refundedWarning: refunded() == true }">
+                                                        <select data-bind="visible: deactivatedFlag()==false, event: { change: $root.processRefund }, options: options, value: optionSelected"></select>
+                                                        @*<button type="button" class="btn btn-primary" data-bind='click: $root.processRefund, text: refundText, visible: refundVisible'>
+                                                                <span> Refund</span>
+                                                            </button>*@
+                                                        <span data-bind='visible: newAvailable'> New</span>
+                                                    </td>
+                                                    <td class="col-md-2" data-bind="css: { refundedWarning: deactivated() == true  }">
+                                                        <select data-bind="visible: registrationDeactivatedVisible() && refundedLocal()==true, event: { change: $root.processDeactivate }, options: registrationDeactivated, value: registrationDeactivatedSelected"></select>
+                                                    </td>
+
+
+                                                    <td class="col-md-1" data-bind='text: $index() + 1'></td>
+                                                    <td data-bind='text: lineItemType'></td>
+                                                    <td data-bind='text: registrationName'></td>
+                                                    <td data-bind='text: eventName'></td>
+                                                    <td class="col-md-1">
+                                                        $<span class="small" data-bind='text: pricePerUnit'></span>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        $<span class="small" data-bind='text: manualDiscount'></span>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        $<span class="small" data-bind='text: courseCredit'></span>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        $<span class="small" data-bind='text: scholarshipAmount'></span>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        $<span class="small" data-bind='text: amount'></span>
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <input class="form-control" data-bind="value: amountRefunded, enable: refundedLocal">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @*<div><span>current selected row: </span><p data-bind="text: currentlyDisplayed().name()"></p></div>*@
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#OrderTransactions">Order Transactions</a>
+                                </h4>
+                            </div>
+                            <div class="row panel-collapse collapse" id="OrderTransactions">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead data-toggle="collapse" class="tab-content">
+                                                <tr>
+                                                    @*
+                                                        <th>Type</th>
+                                                        <th>Payment Type</th>*@
+                                                    <th>Date</th>
+                                                    <th>Type</th>
+                                                    <th>Amount</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="foreach: orderTransactionItemsByOrder">
+                                                <tr>
+                                                    @*
+                                                        <td data-bind='text: transactionType'></td>
+                                                        <td data-bind='text: paymentType'></td>*@
+                                                    <td data-bind='textualDateTime: date'></td>
+                                                    <td data-bind='text: transactionType'></td>
+                                                    <td data-bind='currencyField: transactionAmount'></td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @*<div><span>current selected row: </span><p data-bind="text: currentlyDisplayed().name()"></p></div>*@
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="saleOrderPage" data-bind="with: salesOrder">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                               
+
+                                                    <div class="form-group">
+                                                        <label data-bind="text: messagePayment">Total Credit $</label>
+                                                        <input class="form-control" data-bind="value: valueToPay, disable: true">
+                                                        <label data-bind="text: messagePayment, visible: false">Balance to Pay $</label>
+                                                        <input class="form-control" data-bind="value: balanceToPay, disable: true, visible: false">
+
+                                                        <br />
+
+                                                        <button class="btn btn-primary btn-lg" data-bind="click: $root.processSale">
+                                                            Process
+                                                        </button>
+                                                        <button class="btn btn-primary btn-lg" data-bind="visible: false" data-toggle="modal" data-target="#PaymentModal" id="Payment">
+                                                            ProcessModal
+                                                        </button>
+                                                        <span class="input-group-btn" style="display:none">
+                                                            <button class="btn btn-default" id="OpenModalPayment" type="button" data-toggle="modal" data-target="#SalesPaymentAdministrationModal">
+                                                                <i class="fa fa-search"></i>
+                                                            </button>
+
+                                                        </span>
+                                                    </div>
+                                                
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- /.col-lg-4 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/app/salesOrderItemsList.js")
+    @Scripts.Render("~/Scripts/app/paymentLookup.js")
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+}
+
+@Html.Partial("PaymentLookup")

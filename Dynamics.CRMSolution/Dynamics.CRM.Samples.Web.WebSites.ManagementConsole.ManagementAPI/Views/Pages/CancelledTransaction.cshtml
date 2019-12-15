@@ -1,0 +1,53 @@
+﻿<style>
+    .selected {
+        background-color: yellow;
+    }
+
+    .handSelection {
+        cursor: pointer;
+    }
+</style>
+
+<div id="CancelledTransaction">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading" data-bind="visible: isPayment">
+                    Payment Cancelled
+                </div>
+                <div class="panel-heading" data-bind="visible: isSwap">
+                    Swap Cancelled
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        
+                        <div class="col-lg-6" data-bind="visible: isPayment">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Occurred a problem with payment</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-2">
+                            <form role="form">
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-xl" data-bind="click: returnIndex">
+                                        Return to Home.
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                          
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/app/cancelledTransaction.js")
+    
+}
+@Html.Partial("ContactLookup")
+

@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Arcos.CUC.WorkOrdersInfrastructure.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="companyDatabaseConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=CUCSQL01;Database=HTE_DATA;Trusted_Connection=true</Value>
+    </Setting>
+    <Setting Name="providerName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">System.Data.SqlClient</Value>
+    </Setting>
+    <Setting Name="url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.18.13:81/HTEPGMT/W3OSWRJOIC</Value>
+    </Setting>
+    <Setting Name="userId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">crmwork</Value>
+    </Setting>
+    <Setting Name="password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">arcos</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
